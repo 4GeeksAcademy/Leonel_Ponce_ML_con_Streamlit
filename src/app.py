@@ -35,11 +35,24 @@ Ingrese sus datos para predecir el precio estimado de su póliza.
 # -----------------------------------------
 age = st.slider(
     label="¿Cuál es tu edad?",
-    min_value=18,
+    min_value=12,
     max_value=99,
     value=30,
     help="Desliza y selecciona tu edad"
 )
+
+if age <= 12:
+    st.info("🧒 Eres un niño aún")
+elif age <= 25:
+    st.info("👨‍🦱 Eres joven, la vida al descontrol")
+elif age <= 40:
+    st.info("🧔 comienzan las crisis existenciales")
+elif age <= 56:
+    st.info("🧔 Ya eres mayor")
+elif age <= 70:
+    st.info("👴 Ya eres mayor")
+else:
+    st.warning("💀 La tierra te reclama")
 
 bmi = st.slider(
     label="¿Cuál es tu indice de masa corporal? (BMI)",
@@ -49,6 +62,13 @@ bmi = st.slider(
     step=0.1,
     help="Tu indice de masa corporal (IMC) se calcula así: tu peso / tu altura² (kg/m²)"
 )
+
+if bmi > 30 and bmi <= 35:
+    st.info("🐷 Habrá que cuidar la alimentación")
+elif bmi > 35 and bmi <= 40:
+    st.warning("💪 Es necesario comenzar el gimnasio")
+elif bmi > 40:
+    st.error("🔥 Es necesario tomar medidas urgentes")
 
 smoker_num = st.radio(
     label="¿Eres fumador?",
